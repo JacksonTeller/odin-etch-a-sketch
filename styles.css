@@ -3,3 +3,15 @@
     flex-wrap: wrap;
     width: 1200px;
 }
+
+.lil-square {
+    background-color: aquamarine;
+    border: 2px solid black;
+    width: 75px;
+    height: 75px;
+    box-sizing: border-box;
+}
+
+.hovered {
+    background-color: blue;
+}
