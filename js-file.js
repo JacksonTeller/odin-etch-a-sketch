@@ -19,3 +19,7 @@ lilSquares.forEach(lilSquare => lilSquare.addEventListener('mouseover', () => {
     lilSquare.classList.add('hovered');
 }))
 
+const button = document.querySelector("button");
+button.addEventListener('click', () => {
+    lilSquares.forEach(lilSquare => lilSquare.classList.remove('hovered'));
+});
