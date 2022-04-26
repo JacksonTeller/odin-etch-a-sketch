@@ -12,3 +12,9 @@ for (let i = 0; i < 256; i++) {
 
     grid.appendChild(square);
 }
+
+let lilSquares = document.querySelectorAll(".lil-square");
+
+lilSquares.forEach(lilSquare => lilSquare.addEventListener('mouseover', () => {
+    lilSquare.style.backgroundColor = 'blue';
+}))
