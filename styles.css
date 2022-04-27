@@ -2,6 +2,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: palevioletred;
 }
 
 button {
@@ -11,14 +12,14 @@ button {
 .grid {
     display: flex;
     flex-wrap: wrap;
-    width: 640px;
+    align-content: flex-start;
+    width: 641px;
+    height: 641px;
 }
 
 .lil-square {
     background-color: aquamarine;
     border: 2px solid black;
-    width: 40px;
-    height: 40px;
     box-sizing: border-box;
 }
 

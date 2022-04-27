@@ -7,8 +7,8 @@ for (let i = 0; i < 256; i++) {
     // square.innerText = "Hey ya";
     // square.style.backgroundColor = 'aquamarine';
     // square.style.border = "2px solid black";
-    // square.style.width = "75px";
-    // square.style.height = "75px";
+    square.style.width = "40px";
+    square.style.height = "40px";
     // square.style.boxSizing = "border-box";
 
     grid.appendChild(square);
@@ -37,6 +37,11 @@ button.addEventListener('click', () => {
     colorGrid();
 });
 
+//change width and the height
+function changeSquaresize (e) {
+    e.width = ''
+}
+
 //make a new grid with a defined size, delete the old grid
 function createGrid () {
     let size = prompt("Set the size of a new grid: ");
@@ -45,9 +50,11 @@ function createGrid () {
 
     for (let i = 0; i < size*size; i++) {
         let square = document.createElement('div');
-    square.classList.add('lil-square');
-    // square.innerText = "Hey ya";
-
-    grid.appendChild(square);
+        square.classList.add('lil-square');
+        let dimensions = 640 / size;
+        console.log(dimensions.toString() + "px")
+        square.style.width = dimensions.toString() + "px";
+        square.style.height = dimensions.toString() + "px";
+        grid.appendChild(square);
     }
 }
