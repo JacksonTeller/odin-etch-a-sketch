@@ -55,6 +55,7 @@ function createGrid () {
         console.log(dimensions.toString() + "px")
         square.style.width = dimensions.toString() + "px";
         square.style.height = dimensions.toString() + "px";
+        
         grid.appendChild(square);
     }
 }
