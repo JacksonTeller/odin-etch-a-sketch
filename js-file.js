@@ -14,18 +14,23 @@ for (let i = 0; i < 256; i++) {
     grid.appendChild(square);
 }
 
-//color the squeares when hovered
+//color the squares when hovered
 let lilSquares = document.querySelectorAll(".lil-square");
 
 lilSquares.forEach(lilSquare => lilSquare.addEventListener('mouseover', () => {
-    lilSquare.classList.add('hovered');
+    const randomColor = Math.floor(Math.random()*16777215).toString(16); //parameter '16' converts number to hexadecimal string
+    lilSquare.style.backgroundColor = "#" + randomColor;
+
+    // lilSquare.classList.add('hovered');
 }))
 
 function colorGrid () {
     let lilSquares = document.querySelectorAll(".lil-square");
 
     lilSquares.forEach(lilSquare => lilSquare.addEventListener('mouseover', () => {
-    lilSquare.classList.add('hovered');
+        const randomColor = Math.floor(Math.random()*16777215).toString(16); //parameter '16' converts number to hexadecimal string
+        lilSquare.style.backgroundColor = "#" + randomColor;
+    // lilSquare.classList.add('hovered');
 }))
 }
 
@@ -52,7 +57,7 @@ function createGrid () {
         let square = document.createElement('div');
         square.classList.add('lil-square');
         let dimensions = 640 / size;
-        console.log(dimensions.toString() + "px")
+        // console.log(dimensions.toString() + "px")
         square.style.width = dimensions.toString() + "px";
         square.style.height = dimensions.toString() + "px";
         
