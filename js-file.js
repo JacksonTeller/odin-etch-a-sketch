@@ -18,8 +18,13 @@ for (let i = 0; i < 256; i++) {
 let lilSquares = document.querySelectorAll(".lil-square");
 
 lilSquares.forEach(lilSquare => lilSquare.addEventListener('mouseover', () => {
-    const randomColor = Math.floor(Math.random()*16777215).toString(16); //parameter '16' converts number to hexadecimal string
-    lilSquare.style.backgroundColor = "#" + randomColor;
+    const hue = Math.floor(Math.random() * 361).toString();
+    const saturation = (Math.floor(Math.random() * 56) + 45).toString();
+    const lightness = (Math.floor(Math.random() * 76) + 25).toString();
+    lilSquare.style.backgroundColor =`hsl(${hue},${saturation}%,${lightness}% )`;
+    
+    // const randomColor = Math.floor(Math.random()*16777215).toString(16); //parameter '16' converts number to hexadecimal string
+    // lilSquare.style.backgroundColor = "#" + randomColor;
 
     // lilSquare.classList.add('hovered');
 }))
@@ -28,8 +33,10 @@ function colorGrid () {
     let lilSquares = document.querySelectorAll(".lil-square");
 
     lilSquares.forEach(lilSquare => lilSquare.addEventListener('mouseover', () => {
-        const randomColor = Math.floor(Math.random()*16777215).toString(16); //parameter '16' converts number to hexadecimal string
-        lilSquare.style.backgroundColor = "#" + randomColor;
+        const hue = Math.floor(Math.random() * 361).toString();
+        const saturation = (Math.floor(Math.random() * 56) + 45).toString();
+        const lightness = (Math.floor(Math.random() * 76) + 25).toString();
+        lilSquare.style.backgroundColor =`hsl(${hue},${saturation}%,${lightness}% )`;
     // lilSquare.classList.add('hovered');
 }))
 }
