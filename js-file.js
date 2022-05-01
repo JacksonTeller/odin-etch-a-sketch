@@ -31,14 +31,42 @@ function randomColor(e) {
     
     if (e.target.classList.contains('hovered')) {
         removeEvent();
-        e.target.classList.remove('hovered');
+        e.target.classList.remove('hovered')
+        e.target.classList.add('1');
     }
     console.log(e.target.style.backgroundColor);
     let regex = /\d{3}|\d{2}|\d{1}/g;
     let found = (e.target.style.backgroundColor).match(regex);
     console.log(found);
     
-    console.log(rgbToHsl(found[0],found[1],found[2]));
+    let hslColor = rgbToHsl(found[0],found[1],found[2]);
+
+    console.log(hslColor);
+    console.log(hslColor[2] - hslColor[2] * 0.1);
+
+    //do something with this part (I need to lower lightening of a hovered square)
+
+    e.target.addEventListener('mouseover', makeItDarker);
+
+    // e.target.addEventListener('mouseover', () => {
+    //     if (e.target.classList.contains('1')) {
+    //     let found1 = (e.target.style.backgroundColor).match(regex);
+    //     let hslColor1 = rgbToHsl(found1[0],found1[1],found1[2]);
+    //     e.target.style.backgroundColor = `hsl(${hslColor1[0]},${hslColor1[1]}%,${hslColor1[2] - hslColor1[2] * 0.1}%)`;
+    //     // e.target.classList.remove('1');
+    //     }
+    // })
+    
+}
+
+function makeItDarker (e) {
+    if (e.target.classList.contains('1')) {
+        let regex = /\d{3}|\d{2}|\d{1}/g;
+        let found1 = (e.target.style.backgroundColor).match(regex);
+        let hslColor1 = rgbToHsl(found1[0],found1[1],found1[2]);
+        e.target.style.backgroundColor = `hsl(${hslColor1[0]},${hslColor1[1]}%,${hslColor1[2] - hslColor1[2] * 0.1}%)`;
+        // e.target.classList.remove('1');
+        }
 }
 
 function rgbToHsl(r, g, b) {
@@ -97,13 +125,14 @@ function removeEvent () {
 function colorGrid () {
     let lilSquares = document.querySelectorAll(".lil-square");
 
-    lilSquares.forEach(lilSquare => lilSquare.addEventListener('mouseover', () => {
-        const hue = Math.floor(Math.random() * 361).toString();
-        const saturation = (Math.floor(Math.random() * 56) + 45).toString();
-        const lightness = (Math.floor(Math.random() * 76) + 25).toString();
-        lilSquare.style.backgroundColor =`hsl(${hue},${saturation}%,${lightness}%)`;
+    lilSquares.forEach(lilSquare => lilSquare.addEventListener('mouseover', randomColor));
+    // lilSquares.forEach(lilSquare => lilSquare.addEventListener('mouseover', () => {
+    //     const hue = Math.floor(Math.random() * 361).toString();
+    //     const saturation = (Math.floor(Math.random() * 56) + 45).toString();
+    //     const lightness = (Math.floor(Math.random() * 76) + 25).toString();
+    //     lilSquare.style.backgroundColor =`hsl(${hue},${saturation}%,${lightness}%)`;
      // lilSquare.classList.add('hovered');
-}))
+// }))
     // lilSquares.forEach(lilSquare => lilSquare.addEventListener('mouseover', () => {
     //     lilSquare.style.backgroundColor = `hsl`
     // })
@@ -112,7 +141,11 @@ function colorGrid () {
 //clean the hovering effect
 const button = document.querySelector("button");
 button.addEventListener('click', () => {
-    lilSquares.forEach(lilSquare => lilSquare.classList.remove('hovered'));
+    lilSquares.forEach(lilSquare => lilSquare.removeEventListener('mouseover', makeItDarker));
+    // lilSquares.forEach(lilSquare => lilSquare.removeEventListener('mouseover', randomColor));
+    lilSquares.forEach(lilSquare => lilSquare.classList.remove('1'));
+
+    // lilSquares.forEach(lilSquare => lilSquare.addEventListener('mouseover', randomColor));
     createGrid();
     colorGrid();
 });
@@ -124,7 +157,11 @@ function changeSquaresize (e) {
 
 //make a new grid with a defined size, delete the old grid
 function createGrid () {
-    let size = prompt("Set the size of a new grid: ");
+    let size = prompt("Set the size of a new grid (0-100): ");
+    if (size > 100) {
+        alert("The number is too big!")
+        size = prompt("Set the size of a new grid (0-100): ")
+    }
     let lilSquares = document.querySelectorAll(".lil-square");
     lilSquares.forEach(lilSquare => lilSquare.remove());
 
