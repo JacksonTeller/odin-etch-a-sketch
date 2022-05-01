@@ -100,10 +100,10 @@ buttonClean.addEventListener('click', () => {
 
 //make a new grid with a defined size, delete the old grid
 function createGrid () {
-    let size = prompt("Set the size of a new grid (0-100): ");
-    if (size > 100) {
-        alert("The number is too big!")
-        size = prompt("Set the size of a new grid (0-100): ")
+    let size = prompt("Set the size of a new grid (1-100): ");
+    if (size > 100 || size < 0) {
+        alert("The size is icorrect!\nPlease use the numbers between 1 and 100");
+        size = prompt("Set the size of a new grid (1-100): ");
     }
     let lilSquares = document.querySelectorAll(".lil-square");
     lilSquares.forEach(lilSquare => lilSquare.remove());
