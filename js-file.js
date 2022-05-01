@@ -138,9 +138,9 @@ function colorGrid () {
     // })
 }
 
-//clean the hovering effect
-const button = document.querySelector("button");
-button.addEventListener('click', () => {
+//reset and clean the grid
+const buttonReset = document.querySelector(".reset");
+buttonReset.addEventListener('click', () => {
     lilSquares.forEach(lilSquare => lilSquare.removeEventListener('mouseover', makeItDarker));
     // lilSquares.forEach(lilSquare => lilSquare.removeEventListener('mouseover', randomColor));
     lilSquares.forEach(lilSquare => lilSquare.classList.remove('1'));
@@ -149,6 +149,16 @@ button.addEventListener('click', () => {
     createGrid();
     colorGrid();
 });
+
+//clean the current grid
+const buttonClean = document.querySelector(".clean");
+buttonClean.addEventListener('click', () => {
+    // lilSquares.forEach(lilSquare => lilSquare.removeEventListener('mouseover', makeItDarker));
+    let lilSquares = document.querySelectorAll(".lil-square");
+    lilSquares.forEach(lilSquare => lilSquare.classList.remove('1'));
+    lilSquares.forEach(lilSquare => lilSquare.style.backgroundColor = 'aquamarine');
+    colorGrid();
+})
 
 //change width and the height
 function changeSquaresize (e) {

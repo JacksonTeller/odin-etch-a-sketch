@@ -6,7 +6,21 @@ body {
 }
 
 button {
-    width: fit-content;
+    width: 320.5px;
+    font-size: 32px;
+    background-color: goldenrod;
+    border-color: darkgoldenrod;
+    border-radius: 4px;
+    transition-duration: 0.2s;
+}
+
+button:hover {
+    background-color: gold;
+}
+
+.buttons {
+    display: flex;
+    width: 641px;
 }
 
 .grid {
